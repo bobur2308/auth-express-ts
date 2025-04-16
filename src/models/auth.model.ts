@@ -1,8 +1,9 @@
 // src/models/Post.ts
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document, Types } from 'mongoose';
 
 // Define the Post interface for TypeScript
 export interface IAuth extends Document {
+  _id: Types.ObjectId;
   email: string;
   password: string;
   full_name:string; 
@@ -17,6 +18,7 @@ const AuthSchema: Schema<IAuth> = new Schema(
     email: {
       type: String,
       required: true,
+      unique:true
     },
     full_name: {
       type: String,
